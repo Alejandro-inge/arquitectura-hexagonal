@@ -10,13 +10,17 @@ This repository contains an Hexagonal architecture spring boot project. It shows
 
 ## How to run it
 
-Install dependencies
+1. Setup your DB credentials in the properties file
 
-    mvn clean install
+2. Create the **animals** database 
 
-Run the project
+3. Install dependencies
 
-    mvn spring-boot:run
+        mvn clean install
+
+4. Run the project
+
+        mvn spring-boot:run
 
 ## Actuator and Swagger URLs
 
