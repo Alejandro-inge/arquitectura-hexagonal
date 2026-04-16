@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.animals.demo.infrastructure.in;
+package com.animals.demo.infrastructure.adapters.out;
 
 import java.util.List;
 

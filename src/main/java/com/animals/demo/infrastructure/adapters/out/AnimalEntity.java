@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package com.animals.demo.infrastructure.out;
+package com.animals.demo.infrastructure.adapters.out;
 
 import com.animals.demo.shared.Diet;
 

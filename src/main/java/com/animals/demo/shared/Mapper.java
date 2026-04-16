@@ -6,7 +6,7 @@
 package com.animals.demo.shared;
 
 import com.animals.demo.domain.model.Animal;
-import com.animals.demo.infrastructure.out.AnimalEntity;
+import com.animals.demo.infrastructure.adapters.out.AnimalEntity;
 
 /**
  *
