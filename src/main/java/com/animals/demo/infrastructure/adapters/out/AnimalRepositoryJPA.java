@@ -8,6 +8,8 @@ package com.animals.demo.infrastructure.adapters.out;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.animals.demo.domain.model.Animal;
@@ -21,6 +23,7 @@ import com.animals.demo.shared.Mapper;
 @Component
 public class AnimalRepositoryJPA implements AnimalRepository{
     private final JPAAnimalRepository repository;
+    private Logger log = LoggerFactory.getLogger(AnimalRepositoryJPA.class);
 
     public AnimalRepositoryJPA(JPAAnimalRepository repository) {
         this.repository = repository;
@@ -28,13 +31,16 @@ public class AnimalRepositoryJPA implements AnimalRepository{
 
     @Override
     public List<Animal> getAnimal() {
+        log.info("Consulting information...");
         return repository.findAll().stream().map(Mapper::toDomain).collect(Collectors.toList());
     }
 
     @Override
     public Animal saveAnimal(Animal animal) {
+        log.info("Processing request for {}", animal.getSpecie());
         AnimalEntity entity = Mapper.toEntity(animal);
         Animal createdAnimal = Mapper.toDomain(repository.save(entity));
+        log.info("Resgister for {} has been created successfully", animal.getSpecie());
         return createdAnimal;
     }
 

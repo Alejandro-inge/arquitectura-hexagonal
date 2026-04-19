@@ -7,6 +7,8 @@ package com.animals.demo.infrastructure.adapters.in;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,14 +31,17 @@ import com.animals.demo.domain.model.Animal;
 public class AnimalController {
     @Autowired GetAnimalUseCase useCase;
     @Autowired CreateAnimalUseCase createUseCase;
+    private Logger log = LoggerFactory.getLogger(AnimalController.class);
 
     @GetMapping
     public List<Animal> getAnimal() {
+        log.info("Get animals request received.");
         return useCase.execute();
     }
 
     @PostMapping
     public Animal saveAnimal(@RequestBody Animal animal) {
+        log.info("Create {} request receved", animal.getSpecie());
         return createUseCase.execute(animal);
     }
     
