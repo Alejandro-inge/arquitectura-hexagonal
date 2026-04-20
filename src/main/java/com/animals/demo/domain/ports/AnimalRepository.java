@@ -16,4 +16,5 @@ import com.animals.demo.domain.model.Animal;
 public interface AnimalRepository {
     List<Animal> getAnimal();
     Animal saveAnimal(Animal animal);
+    void deleteAnimal(Long id);
 }

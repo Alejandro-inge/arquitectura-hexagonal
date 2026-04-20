@@ -44,4 +44,9 @@ public class AnimalRepositoryJPA implements AnimalRepository{
         return createdAnimal;
     }
 
+    @Override
+    public void deleteAnimal(Long id) {
+        repository.deleteById(id);
+    }
+
 }
