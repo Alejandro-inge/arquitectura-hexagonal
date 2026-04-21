@@ -23,7 +23,7 @@ import com.animals.demo.shared.Mapper;
 @Component
 public class AnimalRepositoryJPA implements AnimalRepository {
     private final JPAAnimalRepository repository;
-    private Logger log = LoggerFactory.getLogger(AnimalRepositoryJPA.class);
+    private final Logger log = LoggerFactory.getLogger(AnimalRepositoryJPA.class);
 
     public AnimalRepositoryJPA(JPAAnimalRepository repository) {
         this.repository = repository;

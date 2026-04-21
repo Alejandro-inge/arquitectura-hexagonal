@@ -23,7 +23,7 @@ import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 @Service
 public class GetAnimalUseCaseImp implements GetAnimalUseCase {
     private final AnimalRepository repository;
-    private Logger log = LoggerFactory.getLogger(GetAnimalUseCaseImp.class);
+    private final Logger log = LoggerFactory.getLogger(GetAnimalUseCaseImp.class);
     
 
     public GetAnimalUseCaseImp(AnimalRepository repository) {

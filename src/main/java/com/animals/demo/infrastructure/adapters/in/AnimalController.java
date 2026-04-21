@@ -40,7 +40,7 @@ public class AnimalController {
     @Autowired CreateAnimalUseCase createUseCase;
     @Autowired DeleteAnimalUseCase deleteAnimalUseCase;
 
-    private Logger log = LoggerFactory.getLogger(AnimalController.class);
+    private final Logger log = LoggerFactory.getLogger(AnimalController.class);
 
     @GetMapping
     public List<AnimalResponse> getAnimal() {

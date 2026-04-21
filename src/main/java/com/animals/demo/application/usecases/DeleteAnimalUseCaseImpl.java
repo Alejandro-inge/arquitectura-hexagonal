@@ -19,7 +19,7 @@ import com.animals.demo.domain.ports.AnimalRepository;
 @Service
 public class DeleteAnimalUseCaseImpl implements DeleteAnimalUseCase{
     private final AnimalRepository repository;
-    private Logger log = LoggerFactory.getLogger(CreateAnimalUseCaseImp.class);
+    private final Logger log = LoggerFactory.getLogger(CreateAnimalUseCaseImp.class);
 
     public DeleteAnimalUseCaseImpl(AnimalRepository repository) {
         this.repository = repository;
