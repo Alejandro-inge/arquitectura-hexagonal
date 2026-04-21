@@ -23,8 +23,9 @@ import com.animals.demo.application.AnimalCommand;
 import com.animals.demo.application.ports.CreateAnimalUseCase;
 import com.animals.demo.application.ports.DeleteAnimalUseCase;
 import com.animals.demo.application.ports.GetAnimalUseCase;
-import com.animals.demo.domain.model.Animal;
 import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
+
+import jakarta.validation.Valid;
 
 
 
@@ -48,7 +49,7 @@ public class AnimalController {
     }
 
     @PostMapping
-    public AnimalResponse saveAnimal(@RequestBody AnimalRequest animal) {
+    public AnimalResponse saveAnimal(@Valid @RequestBody AnimalRequest animal) {
         log.info("Create {} request receved", animal.specie());
         AnimalCommand command = new AnimalCommand(animal.specie(), animal.diet(), animal.isEndangered(), animal.isDomesticated(), animal.isExtinct());
         return createUseCase.execute(command);

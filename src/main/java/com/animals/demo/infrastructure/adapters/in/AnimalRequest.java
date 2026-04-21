@@ -7,10 +7,18 @@ package com.animals.demo.infrastructure.adapters.in;
 
 import com.animals.demo.shared.Diet;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 /**
  *
  * @author sleepless
  */
-public record AnimalRequest(String specie, Diet diet, boolean isEndangered, boolean isDomesticated, boolean isExtinct) {
+public record AnimalRequest(
+    @NotBlank String specie, 
+    @NotNull Diet diet, 
+    @NotNull boolean isEndangered, 
+    @NotNull boolean isDomesticated, 
+    @NotNull boolean isExtinct) {
 
 }
