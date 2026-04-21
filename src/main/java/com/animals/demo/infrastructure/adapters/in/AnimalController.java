@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.animals.demo.application.AnimalCommand;
 import com.animals.demo.application.ports.CreateAnimalUseCase;
 import com.animals.demo.application.ports.DeleteAnimalUseCase;
 import com.animals.demo.application.ports.GetAnimalUseCase;
 import com.animals.demo.domain.model.Animal;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 
 
@@ -40,15 +42,16 @@ public class AnimalController {
     private Logger log = LoggerFactory.getLogger(AnimalController.class);
 
     @GetMapping
-    public List<Animal> getAnimal() {
+    public List<AnimalResponse> getAnimal() {
         log.info("Get animals request received.");
         return useCase.execute();
     }
 
     @PostMapping
-    public Animal saveAnimal(@RequestBody Animal animal) {
-        log.info("Create {} request receved", animal.getSpecie());
-        return createUseCase.execute(animal);
+    public AnimalResponse saveAnimal(@RequestBody AnimalRequest animal) {
+        log.info("Create {} request receved", animal.specie());
+        AnimalCommand command = new AnimalCommand(animal.specie(), animal.diet(), animal.isEndangered(), animal.isDomesticated(), animal.isExtinct());
+        return createUseCase.execute(command);
     }
     
     @DeleteMapping("/{id}")

@@ -7,12 +7,12 @@ package com.animals.demo.application.ports;
 
 import java.util.List;
 
-import com.animals.demo.domain.model.Animal;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 /**
  *
  * @author sleepless
  */
 public interface GetAnimalUseCase {
-    List<Animal> execute();
+    List<AnimalResponse> execute();
 }

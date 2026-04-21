@@ -8,13 +8,15 @@ package com.animals.demo.domain.ports;
 import java.util.List;
 
 import com.animals.demo.domain.model.Animal;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 /**
  *
  * @author sleepless
  */
 public interface AnimalRepository {
-    List<Animal> getAnimal();
-    Animal saveAnimal(Animal animal);
+    List<AnimalResponse> getAnimal();
+    AnimalResponse saveAnimal(Animal animal);
     void deleteAnimal(Long id);
+    void updateAnimal(Animal animal);
 }

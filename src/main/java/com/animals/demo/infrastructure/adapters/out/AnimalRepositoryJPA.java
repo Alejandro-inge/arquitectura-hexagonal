@@ -21,7 +21,7 @@ import com.animals.demo.shared.Mapper;
  * @author sleepless
  */
 @Component
-public class AnimalRepositoryJPA implements AnimalRepository{
+public class AnimalRepositoryJPA implements AnimalRepository {
     private final JPAAnimalRepository repository;
     private Logger log = LoggerFactory.getLogger(AnimalRepositoryJPA.class);
 
@@ -30,16 +30,16 @@ public class AnimalRepositoryJPA implements AnimalRepository{
     }
 
     @Override
-    public List<Animal> getAnimal() {
+    public List<AnimalResponse> getAnimal() {
         log.info("Consulting information...");
-        return repository.findAll().stream().map(Mapper::toDomain).collect(Collectors.toList());
+        return repository.findAll().stream().map(this::toResponse).collect(Collectors.toList());
     }
 
     @Override
-    public Animal saveAnimal(Animal animal) {
+    public AnimalResponse saveAnimal(Animal animal) {
         log.info("Processing request for {}", animal.getSpecie());
         AnimalEntity entity = Mapper.toEntity(animal);
-        Animal createdAnimal = Mapper.toDomain(repository.save(entity));
+        AnimalResponse createdAnimal = toResponse(repository.save(entity));
         log.info("Resgister for {} has been created successfully", animal.getSpecie());
         return createdAnimal;
     }
@@ -49,6 +49,17 @@ public class AnimalRepositoryJPA implements AnimalRepository{
         log.info("Processing delete request for id: {}", id);
         repository.deleteById(id);
         log.info("Register with id: {} has been deleted successfully", id);
+    }
+
+    @Override
+    public void updateAnimal(Animal animal) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private AnimalResponse toResponse(AnimalEntity animalEntity) {
+        return new AnimalResponse(animalEntity.getId(), animalEntity.getSpecie(), animalEntity.getDiet(),
+                animalEntity.isEndangered(),
+                animalEntity.isDomesticated(), animalEntity.isExtinct());
     }
 
 }

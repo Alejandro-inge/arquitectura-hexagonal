@@ -5,12 +5,13 @@
 
 package com.animals.demo.application.ports;
 
-import com.animals.demo.domain.model.Animal;
+import com.animals.demo.application.AnimalCommand;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 /**
  *
  * @author sleepless
  */
 public interface CreateAnimalUseCase {
-    Animal execute(Animal animal);
+    AnimalResponse execute(AnimalCommand command);
 }

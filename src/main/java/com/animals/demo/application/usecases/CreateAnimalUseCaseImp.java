@@ -9,9 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.animals.demo.application.AnimalCommand;
 import com.animals.demo.application.ports.CreateAnimalUseCase;
 import com.animals.demo.domain.model.Animal;
 import com.animals.demo.domain.ports.AnimalRepository;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 /**
  *
@@ -28,8 +30,9 @@ public class CreateAnimalUseCaseImp implements CreateAnimalUseCase{
     }
 
     @Override
-    public Animal execute(Animal animal) {
-        log.info("Starting request for {}", animal.getSpecie());
+    public AnimalResponse execute(AnimalCommand command) {
+        log.info("Starting request for {}", command.specie());
+        Animal animal = new Animal(command.specie(), command.diet(), command.isEndangered(), command.isDomesticated(), command.isExtinct());
         return repository.saveAnimal(animal);
     }
 

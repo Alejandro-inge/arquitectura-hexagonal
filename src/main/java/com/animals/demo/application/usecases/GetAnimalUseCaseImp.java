@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.animals.demo.application.ports.GetAnimalUseCase;
-import com.animals.demo.domain.model.Animal;
 import com.animals.demo.domain.ports.AnimalRepository;
+import com.animals.demo.infrastructure.adapters.out.AnimalResponse;
 
 /**
  *
@@ -31,7 +31,7 @@ public class GetAnimalUseCaseImp implements GetAnimalUseCase {
     }
 
     @Override
-    public List<Animal> execute() {
+    public List<AnimalResponse> execute() {
         log.info("Starting request");
         return repository.getAnimal();
     }
