@@ -5,6 +5,8 @@
 
 package com.animals.demo.application.usecases;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.animals.demo.application.ports.DeleteAnimalUseCase;
@@ -17,6 +19,7 @@ import com.animals.demo.domain.ports.AnimalRepository;
 @Service
 public class DeleteAnimalUseCaseImpl implements DeleteAnimalUseCase{
     private final AnimalRepository repository;
+    private Logger log = LoggerFactory.getLogger(CreateAnimalUseCaseImp.class);
 
     public DeleteAnimalUseCaseImpl(AnimalRepository repository) {
         this.repository = repository;
@@ -24,6 +27,7 @@ public class DeleteAnimalUseCaseImpl implements DeleteAnimalUseCase{
 
     @Override
     public void execute(Long id) {
+        log.info("Starting request to delete id: {}", id);
         repository.deleteAnimal(id);
     }
 

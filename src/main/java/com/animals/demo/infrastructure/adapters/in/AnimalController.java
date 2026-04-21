@@ -53,6 +53,7 @@ public class AnimalController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAnimal(@PathVariable Long id) {
+        log.info("Delete id {} request received.", id);
         deleteAnimalUseCase.execute(id);
         return ResponseEntity.ok().body("Register: " +id+ " has been deleted");
     }

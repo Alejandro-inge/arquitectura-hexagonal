@@ -46,7 +46,9 @@ public class AnimalRepositoryJPA implements AnimalRepository{
 
     @Override
     public void deleteAnimal(Long id) {
+        log.info("Processing delete request for id: {}", id);
         repository.deleteById(id);
+        log.info("Register with id: {} has been deleted successfully", id);
     }
 
 }
